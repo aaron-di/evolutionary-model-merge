@@ -1,4 +1,5 @@
 import os
+import time
 import argparse
 import gc
 import json
@@ -66,5 +67,15 @@ def main(args):
 
 
 if __name__ == "__main__":
+    start_time = time.time()  # Capture start time
+
     args = parse_args()
     main(args)
+
+    end_time = time.time()  # Capture end time
+    total_runtime_seconds = end_time - start_time  # Calculate total runtime
+    total_runtime_minutes = total_runtime_seconds / 60  # Convert seconds to minutes
+
+
+    # Log the total runtime
+    logger.info(f"Total runtime: {total_runtime_seconds:.2f} seconds / ({total_runtime_minutes:.2f} minutes)")
