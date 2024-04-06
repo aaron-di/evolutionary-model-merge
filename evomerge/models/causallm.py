@@ -38,7 +38,7 @@ class CausalLMWithvLLM(nn.Module, ModuleUtilsMixin):
         self.generation_config = default(
             generation_config, self.default_generation_config
         )
-        self.model = LLM(model=model_path, **self.model_kwargs)
+        self.model = LLM(model=model_path, tensor_parallel_size=2, **self.model_kwargs)
         self.post_init()
 
     def post_init(self):
